@@ -1,5 +1,6 @@
 import cosc343.assig2.World;
 import cosc343.assig2.Creature;
+import Chromosome;
 import java.util.*;
 
 /**
@@ -39,8 +40,6 @@ public class MyWorld extends World {
       // Set the number of turns and generations
       this.setNumTurns(_numTurns);
       this.setNumGenerations(_numGenerations);
-
-
   }
 
   /* The main function for the MyWorld application
@@ -88,7 +87,7 @@ public class MyWorld extends World {
     // a population of your creatures
     MyCreature[] population = new MyCreature[numCreatures];
     for(int i=0;i<numCreatures;i++) {
-        population[i] = new MyCreature(numPercepts, numActions);
+        population[i] = new MyCreature();
     }
     return population;
   }

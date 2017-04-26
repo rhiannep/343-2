@@ -1,5 +1,6 @@
 import cosc343.assig2.Creature;
 import java.util.Random;
+import Chromosome;
 
 /**
 * The MyCreate extends the cosc343 assignment 2 Creature.  Here you implement
@@ -11,9 +12,11 @@ import java.util.Random;
 * @since   2017-04-05
 */
 public class MyCreature extends Creature {
-
+  private static final int VISIBLE_SQUARES = 9;
   // Random number generator
   Random rand = new Random();
+
+  Chromosome chromosome;
 
   /* Empty constructor - might be a good idea here to put the code that
    initialises the chromosome to some random state
@@ -22,8 +25,8 @@ public class MyCreature extends Creature {
           numAction - number of action output vector that creature will need
                       to produce on every turn
   */
-  public MyCreature(int numPercepts, int numActions) {
-
+  public MyCreature(Chromosome chromosome) {
+    this.chromosome = chromosome;
   }
 
   /* This function must be overridden by MyCreature, because it implements
@@ -41,16 +44,25 @@ public class MyCreature extends Creature {
   @Override
   public float[] AgentFunction(int[] percepts, int numPercepts, int numExpectedActions) {
       // the percepts.  You need to replace this code.
-      float actions[] = new float[numExpectedActions];
-      for(int i=0;i<numExpectedActions;i++) {
-         if(i < 9) {
-           percepts[i] *= preferenceForMonsters;
-         }
-         if(i < 18) {
-           percepts[i] *= preferenceForMonsters;
+
+      double[] temp = new double[numPercepts];
+
+      for(int i = 0; i < numPercepts; i++) {
+         if(i < VISIBLE_SQUARES) {
+           temp[i] = percepts[i] * chromosome.preferenceForMonsters();
+         } else if(i < VISIBLE_SQUARES * 2) {
+           temp[i] = percepts[i] * chromosome.preferenceForFriends();
+         } else {
+           temp[i] = percepts[i] * chromosome.preferenceForFood();
          }
       }
+      float actions[] = new float[numExpectedActions];
+
+      for(int i = 0; i < VISIBLE_SQUARES; i++) {
+        actions[i] = temp[i] + temp[i + VISIBLE_SQUARES] + temp[i + 2 * VISIBLE_SQUARES];
+      }
+      actions[numExpectedActions - 2] = (float) percepts[chromosome.squareGuess] * chromosome.preferenceForEating();
+      actions[numExpectedActions - 1] = (float) chromosome.nextDouble(-1, 1, rand);
       return actions;
   }
-
 }
