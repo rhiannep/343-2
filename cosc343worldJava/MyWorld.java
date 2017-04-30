@@ -1,6 +1,6 @@
 import cosc343.assig2.World;
 import cosc343.assig2.Creature;
-import Chromosome;
+import chromosome.Chromosome;
 import java.util.*;
 
 /**
@@ -20,7 +20,9 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 500;
+  private final int _numGenerations = 200;
+  private static final float[] FITNESS_PARAMS = { 3f, 3f, 5f };
+
 
 
 
@@ -87,7 +89,7 @@ public class MyWorld extends World {
     // a population of your creatures
     MyCreature[] population = new MyCreature[numCreatures];
     for(int i=0;i<numCreatures;i++) {
-        population[i] = new MyCreature();
+        population[i] = new MyCreature(new Chromosome());
     }
     return population;
   }
@@ -123,6 +125,10 @@ public class MyWorld extends World {
      // well they did in the simulation
      float avgLifeTime=0f;
      int nSurvivors = 0;
+     float averageFitness = 0f;
+
+     MyCreature king = old_population[0];
+     MyCreature queen = old_population[1];
      for(MyCreature creature : old_population) {
         // The energy of the creature.  This is zero if creature starved to
         // death, non-negative oterhwise.  If this number is zero, but the
@@ -130,9 +136,13 @@ public class MyWorld extends World {
         // at the time of death.
         int energy = creature.getEnergy();
 
-        // This querry can tell you if the creature died during simulation
+        // This query can tell you if the creature died during simulation
         // or not.
         boolean dead = creature.isDead();
+
+        float fitness = fitness(creature);
+
+        averageFitness += fitness;
 
         if(dead) {
            // If the creature died during simulation, you can determine
@@ -143,6 +153,13 @@ public class MyWorld extends World {
            nSurvivors += 1;
            avgLifeTime += (float) _numTurns;
         }
+
+        if(fitness > fitness(king)) {
+          king = creature;
+        }
+        if(fitness > fitness(queen) && fitness < fitness(king)) {
+          queen = creature;
+        }
      }
 
      // Right now the information is used to print some stats...but you should
@@ -150,9 +167,16 @@ public class MyWorld extends World {
      // you define your fitness function.  You should add a print out or
      // some visual display of average fitness over generations.
      avgLifeTime /= (float) numCreatures;
-     System.out.println("Simulation stats:");
-     System.out.println("  Survivors    : " + nSurvivors + " out of " + numCreatures);
-     System.out.println("  Avg life time: " + avgLifeTime + " turns");
+     averageFitness /= (float) numCreatures;
+
+    //  System.out.println("Simulation stats:");
+    //  System.out.println("  Survivors    : " + nSurvivors + " out of " + numCreatures);
+    //  System.out.println("  Avg life time: " + avgLifeTime + " turns");
+     System.out.println(" " + averageFitness + " " + nSurvivors);
+
+     System.out.println("            Mons   red       green      friends    eating    square");
+     System.out.println("  king: " + king.chromosome.toString() + " " + fitness(king));
+    //  System.out.println("  queen: " + queen.chromosome.toString());
 
 
      // Having some way of measuring the fitness, you should implement a proper
@@ -161,13 +185,40 @@ public class MyWorld extends World {
      // some elitism, you can use old creatures in the next generation.  This
      // example code uses all the creatures from the old generation in the
      // new generation.
+
      for(int i=0;i<numCreatures; i++) {
-        new_population[i] = old_population[i];
+       if(i % 10 == 0) {
+         new_population[i] = king;
+       } else {
+         new_population[i] = new MyCreature(new Chromosome(king.chromosome, queen.chromosome));
+       }
+
      }
-
-
      // Return new population of creatures.
      return new_population;
+  }
+
+  private float fitness(Creature creature) {
+    float sumOfWeights = 0f;
+
+    for(int i = 0; i < FITNESS_PARAMS.length; i++) {
+      sumOfWeights += FITNESS_PARAMS[i];
+    }
+
+    for(int i = 0; i < FITNESS_PARAMS.length; i++) {
+      FITNESS_PARAMS[i] /= sumOfWeights;
+    }
+
+    float fitness = FITNESS_PARAMS[0] * creature.getEnergy();
+
+    if(creature.isDead()) {
+      fitness += FITNESS_PARAMS[1] * creature.timeOfDeath();
+      fitness -= FITNESS_PARAMS[2];
+    } else {
+      fitness += FITNESS_PARAMS[1] * 100f;
+      fitness += FITNESS_PARAMS[2];
+    }
+    return fitness;
   }
 
 }

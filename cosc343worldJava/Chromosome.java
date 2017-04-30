@@ -1,3 +1,4 @@
+package chromosome;
 import java.util.*;
 
 public class Chromosome {
@@ -6,50 +7,96 @@ public class Chromosome {
   private static final int MIN_PREFERENCE = -1;
 
   public static final int MONSTERS = 0;
-  public static final int FOOD = 1;
-  public static final int RED_OR_GREEN = 2;
+  public static final int RED = 1;
+  public static final int GREEN = 2;
   public static final int FRIENDS = 3;
   public static final int EATING = 4;
+  public static final int GUESS_A_SQUARE = 5;
 
+  public static final int PARAMS = 6;
 
-  public double[] preferences;
+  public float[] preferences;
+  public float[][] relativePreferences;
 
-  public int squareGuess;
+  private final Random random = new Random();
 
-  public Chromosome(Random random) {
-    preferences = new double[EATING + 1];
-    for(int i = 0; i < preferences.length; i++) {
-      preferences[i] = nextDouble(MIN_PREFERENCE, MAX_PREFERENCE, random);
+  public Chromosome() {
+
+    preferences = new float[PARAMS];
+    for(int i = 0; i < preferences.length - 1; i++) {
+      preferences[i] = nextFloat();
     }
-    squareGuess = random.nextInt(VISIBLE_SQUARES + 1);
+    preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
+
+    relativePreferences = new float[VISIBLE_SQUARES][VISIBLE_SQUARES];
+    for(int i = 0; i < VISIBLE_SQUARES; i++) {
+      for(int j = 0; j < VISIBLE_SQUARES; j++){
+        if(i != j) relativePreferences[i][j] = random.nextFloat();
+      }
+    }
   }
 
   public Chromosome(Chromosome mum, Chromosome dad) {
+    preferences = new float[PARAMS];
+    int crossover = 3;
+    for(int i = 0; i < crossover; i++) {
+      preferences[i] = mum.preferences[i];
+    }
+    for(int i = crossover; i < PARAMS; i++) {
+      preferences[i] = dad.preferences[i];
+    }
+
+    float probabilityOfMutation = 0.1f;
+    if(random.nextFloat() < probabilityOfMutation) {
+      for(int i = 0; i < 3; i++) {
+        preferences[random.nextInt(PARAMS - 1)] += nextFloat();
+      }
+    }
+
+    if(random.nextFloat() < probabilityOfMutation/3f) {
+      preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
+    }
+
+    relativePreferences = new float[VISIBLE_SQUARES][VISIBLE_SQUARES];
     
   }
 
-  public double preferenceForMonsters() {
+
+  public float preferenceForMonsters() {
     return preferences[MONSTERS];
   }
 
-  public double preferenceForFood() {
-    return preferences[FOOD];
+  public float preferenceForRed() {
+    return preferences[RED];
   }
 
-  public double preferenceForRed() {
-    return preferences[RED_OR_GREEN];
+  public float preferenceForGreen() {
+    return preferences[GREEN];
   }
 
-  public double preferenceForFriends() {
+  public float preferenceForFriends() {
     return preferences[FRIENDS];
   }
 
-  public double preferenceForEating() {
+  public float preferenceForEating() {
     return preferences[EATING];
   }
 
-  public double nextDouble(double min, double max, Random random) {
-    return min + (max - min) * random.nextDouble();
+  public int whichSquare() {
+    return (int) preferences[GUESS_A_SQUARE];
+  }
+
+  public float nextFloat() {
+    return MIN_PREFERENCE + (MAX_PREFERENCE - MIN_PREFERENCE) * random.nextFloat();
+  }
+
+  public String toString() {
+    String result = "";
+    for(int i = 0; i < PARAMS; i++) {
+      result += preferences[i] + " ";
+    }
+
+    return result;
   }
 
 }

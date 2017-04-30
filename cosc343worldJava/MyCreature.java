@@ -1,6 +1,5 @@
 import cosc343.assig2.Creature;
-import java.util.Random;
-import Chromosome;
+import chromosome.Chromosome;
 
 /**
 * The MyCreate extends the cosc343 assignment 2 Creature.  Here you implement
@@ -13,9 +12,6 @@ import Chromosome;
 */
 public class MyCreature extends Creature {
   private static final int VISIBLE_SQUARES = 9;
-  // Random number generator
-  Random rand = new Random();
-
   Chromosome chromosome;
 
   /* Empty constructor - might be a good idea here to put the code that
@@ -45,24 +41,59 @@ public class MyCreature extends Creature {
   public float[] AgentFunction(int[] percepts, int numPercepts, int numExpectedActions) {
       // the percepts.  You need to replace this code.
 
-      double[] temp = new double[numPercepts];
-
+      float sum = 0;
       for(int i = 0; i < numPercepts; i++) {
-         if(i < VISIBLE_SQUARES) {
-           temp[i] = percepts[i] * chromosome.preferenceForMonsters();
-         } else if(i < VISIBLE_SQUARES * 2) {
-           temp[i] = percepts[i] * chromosome.preferenceForFriends();
-         } else {
-           temp[i] = percepts[i] * chromosome.preferenceForFood();
-         }
+        if(percepts[i] > 0) sum++;
       }
+
+      float[] temp = new float[numPercepts];
+
+      for(int i = 0; i < VISIBLE_SQUARES; i++) {
+        temp[i] = percepts[i] * chromosome.preferenceForMonsters();
+      }
+      for(int i = VISIBLE_SQUARES; i < VISIBLE_SQUARES * 2; i++) {
+        temp[i] = percepts[i] * chromosome.preferenceForFriends();
+      }
+      for(int i = VISIBLE_SQUARES * 2; i < numPercepts; i++) {
+        temp[i] = percepts[i];
+        if(percepts[i] == 1) {
+          temp[i] = chromosome.preferenceForGreen();
+        }
+        if(percepts[i] == 2) {
+          temp[i] = chromosome.preferenceForRed();
+        }
+      }
+
       float actions[] = new float[numExpectedActions];
 
       for(int i = 0; i < VISIBLE_SQUARES; i++) {
         actions[i] = temp[i] + temp[i + VISIBLE_SQUARES] + temp[i + 2 * VISIBLE_SQUARES];
+        temp[i] = actions[i];
       }
-      actions[numExpectedActions - 2] = (float) percepts[chromosome.squareGuess] * chromosome.preferenceForEating();
-      actions[numExpectedActions - 1] = (float) chromosome.nextDouble(-1, 1, rand);
+
+      for(int i = 0; i < VISIBLE_SQUARES; i++) {
+        for(int j = 0; j < VISIBLE_SQUARES; j++) {
+          if(i != j) actions[i] += chromosome.relativePreferences[i][j] * temp[j];
+        }
+      }
+
+      float redOverGreen = Math.abs(chromosome.preferenceForRed() / chromosome.preferenceForGreen());
+      int food = percepts[chromosome.whichSquare() + (2 * VISIBLE_SQUARES)] > 0 ? 1 : 0;
+
+      actions[numExpectedActions - 2] = 0;
+      if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 2){
+        actions[numExpectedActions - 2] = chromosome.preferenceForRed() + chromosome.preferenceForEating();
+      }
+      if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 1){
+        actions[numExpectedActions - 2] = chromosome.preferenceForGreen() + chromosome.preferenceForEating();
+      }
+      actions[numExpectedActions - 1] = chromosome.nextFloat();
+
+      String result = "";
+      for(int i = 0; i < actions.length; i++) {
+        result += actions[i] + " ";
+      }
+
       return actions;
   }
 }
