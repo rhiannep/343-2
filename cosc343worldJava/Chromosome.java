@@ -21,7 +21,6 @@ public class Chromosome {
   private final Random random = new Random();
 
   public Chromosome() {
-
     preferences = new float[PARAMS];
     for(int i = 0; i < preferences.length - 1; i++) {
       preferences[i] = nextFloat();
@@ -58,7 +57,24 @@ public class Chromosome {
     }
 
     relativePreferences = new float[VISIBLE_SQUARES][VISIBLE_SQUARES];
-    
+    for(int i = 0; i < VISIBLE_SQUARES; i++) {
+      for(int j = 0; j < VISIBLE_SQUARES; j++){
+        if(i == j) continue;
+        if(j % 2 == 0) relativePreferences[i][j] = mum.relativePreferences[i][j];
+        else relativePreferences[i][j] = dad.relativePreferences[i][j];
+      }
+    }
+
+    if(random.nextFloat() < probabilityOfMutation) {
+      for(int r = 0; r < 9; r++) {
+          int i = random.nextInt(VISIBLE_SQUARES -1);
+          int j = random.nextInt(VISIBLE_SQUARES -1);
+        relativePreferences[i][j] += nextFloat();
+        if(relativePreferences[i][j] < 0) relativePreferences[i][j] = 0f;
+      }
+    }
+
+
   }
 
 
@@ -95,6 +111,17 @@ public class Chromosome {
     for(int i = 0; i < PARAMS; i++) {
       result += preferences[i] + " ";
     }
+
+    result += "\n";
+
+    for(int i = 0; i < VISIBLE_SQUARES; i++) {
+     result += i + 1 + ": ";
+      for(int j = 0; j < VISIBLE_SQUARES; j++) {
+          result += relativePreferences[i][j] + " ";
+      }
+      result += "\n";
+    }
+
 
     return result;
   }

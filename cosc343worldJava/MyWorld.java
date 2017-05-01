@@ -23,9 +23,6 @@ public class MyWorld extends World {
   private final int _numGenerations = 200;
   private static final float[] FITNESS_PARAMS = { 3f, 3f, 5f };
 
-
-
-
   /* Constructor.
 
      Input: griSize - the size of the world

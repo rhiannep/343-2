@@ -39,7 +39,6 @@ public class MyCreature extends Creature {
   */
   @Override
   public float[] AgentFunction(int[] percepts, int numPercepts, int numExpectedActions) {
-      // the percepts.  You need to replace this code.
 
       float sum = 0;
       for(int i = 0; i < numPercepts; i++) {
@@ -71,15 +70,17 @@ public class MyCreature extends Creature {
         temp[i] = actions[i];
       }
 
+
       for(int i = 0; i < VISIBLE_SQUARES; i++) {
         for(int j = 0; j < VISIBLE_SQUARES; j++) {
-          if(i != j) actions[i] += chromosome.relativePreferences[i][j] * temp[j];
+          if(i != j) actions[i] += (chromosome.relativePreferences[i][j]) * temp[j];
         }
       }
 
       float redOverGreen = Math.abs(chromosome.preferenceForRed() / chromosome.preferenceForGreen());
       int food = percepts[chromosome.whichSquare() + (2 * VISIBLE_SQUARES)] > 0 ? 1 : 0;
 
+      /* Eat. */
       actions[numExpectedActions - 2] = 0;
       if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 2){
         actions[numExpectedActions - 2] = chromosome.preferenceForRed() + chromosome.preferenceForEating();
@@ -87,6 +88,8 @@ public class MyCreature extends Creature {
       if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 1){
         actions[numExpectedActions - 2] = chromosome.preferenceForGreen() + chromosome.preferenceForEating();
       }
+
+      /* Random exploration. */
       actions[numExpectedActions - 1] = chromosome.nextFloat();
 
       String result = "";
