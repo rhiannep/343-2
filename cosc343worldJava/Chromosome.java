@@ -12,15 +12,14 @@ public class Chromosome {
   public static final int EAT_RED = 3;
   public static final int EAT_GREEN = 4;
   public static final int FRIENDS = 5;
-  public static final int EATING = 6;
-  public static final int GUESS_A_SQUARE = 7;
+  public static final int GUESS_A_SQUARE = 6;
 
-  public static final int PARAMS = 8;
+  public static final int PARAMS = 7;
 
   public float[] preferences;
   public HashMap<String, Float> hPreferences;
 
-  private final Random random = new Random();
+  public final Random random = new Random();
 
   public Chromosome() {
     preferences = new float[PARAMS];
@@ -28,13 +27,6 @@ public class Chromosome {
       preferences[i] = nextFloat();
     }
     preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
-
-    relativePreferences = new HashMap<String, Float>();
-    for(int i = 0; i < VISIBLE_SQUARES; i++) {
-      for(int j = i; j < VISIBLE_SQUARES; j++){
-        relativePreferences.put(i + "," + j, random.nextFloat());
-      }
-    }
   }
 
   public Chromosome(Chromosome mum, Chromosome dad) {
@@ -56,31 +48,6 @@ public class Chromosome {
 
     if(random.nextFloat() < probabilityOfMutation/3f) {
       preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
-    }
-
-    relativePreferences = new HashMap<String, Float>();
-    for(int i = 0; i < VISIBLE_SQUARES; i++) {
-      for(int j = i; j < VISIBLE_SQUARES; j++){
-        if(j % 2 == 0) {
-          relativePreferences.put(i + "," + j, mum.relativePreferences.get(i + "," + j));
-        } else {
-          relativePreferences.put(i + "," + j, dad.relativePreferences.get(i + "," + j));
-        }
-      }
-    }
-
-    if(random.nextFloat() < probabilityOfMutation) {
-      for(int r = 0; r < 9; r++) {
-          int i = random.nextInt(VISIBLE_SQUARES -1);
-          int j = random.nextInt(VISIBLE_SQUARES -1);
-          if(j < i) {
-            int t = j;
-            j = i;
-            i = t;
-          }
-        relativePreferences.put(i + "," + j, relativePreferences.get(i + "," + j) + nextFloat());
-        if(relativePreferences.get(i + "," + j) < 0) relativePreferences.put(i + "," + j, 0f);
-      }
     }
   }
 
@@ -104,6 +71,7 @@ public class Chromosome {
   public float preferenceForEatingRed() {
     return preferences[EAT_RED];
   }
+
   public float preferenceForEatingGreen() {
     return preferences[EAT_GREEN];
   }
@@ -116,17 +84,19 @@ public class Chromosome {
     return MIN_PREFERENCE + (MAX_PREFERENCE - MIN_PREFERENCE) * random.nextFloat();
   }
 
+  public float explore() {
+    float max = 0;
+    for(float preference : preferences) {
+      if(preference > max) max = preference;
+    }
+    return max + 1;
+  }
+
   public String toString() {
-    String result = "";
+    String result = "MONSTERS  FINDRED FINDGREEN    EAT RED    EAT GREEN   FRIENDS     SQUARE\n";
     for(int i = 0; i < PARAMS; i++) {
       result += preferences[i] + " ";
     }
-
-    result += "\n";
-
-    result += relativePreferences.toString();
-
-
     return result;
   }
 

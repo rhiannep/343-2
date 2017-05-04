@@ -20,12 +20,12 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 5000;
-  private static final float[] FITNESS_PARAMS = { 3f, 3f, 10f };
+  private final int _numGenerations = 500;
+  private static final float[] FITNESS_PARAMS = { 8f, 10f, 3f };
 
   /* Constructor.
 
-     Input: griSize - the size of the world
+     Input: gridSize - the size of the world
             windowWidth - the width (in pixels) of the visualisation window
             windowHeight - the height (in pixels) of the visualisation window
             repeatableMode - if set to true, every simulation in each
@@ -47,10 +47,10 @@ public class MyWorld extends World {
   public static void main(String[] args) {
      // Here you can specify the grid size, window size and whether torun
      // in repeatable mode or not
-     int gridSize = 24;
+     int gridSize = 30;
      int windowWidth =  1600;
      int windowHeight = 900;
-     boolean repeatableMode = false;
+     boolean repeatableMode = true;
 
       /* Here you can specify percept format to use - there are three to
          chose from: 1, 2, 3.  Refer to the Assignment2 instructions for
@@ -170,10 +170,8 @@ public class MyWorld extends World {
     //  System.out.println("  Survivors    : " + nSurvivors + " out of " + numCreatures);
     //  System.out.println("  Avg life time: " + avgLifeTime + " turns");
      System.out.println(" " + averageFitness + " " + nSurvivors);
-
-     System.out.println("            Mons   red       green      friends    eating    square");
-     System.out.println("  king: " + king.chromosome.toString() + " " + fitness(king));
-    //  System.out.println("  queen: " + queen.chromosome.toString());
+     System.out.println(" " + king.chromosome.toString() + "\n" + fitness(king));
+    //  System.out.println(" " + queen.chromosome.toString()  + "\n" + fitness(queen));
 
 
      // Having some way of measuring the fitness, you should implement a proper
@@ -184,7 +182,7 @@ public class MyWorld extends World {
      // new generation.
 
      for(int i=0;i<numCreatures; i++) {
-       if(i % 10 == 0) {
+       if(i % 5 == 0) {
          new_population[i] = king;
        } else {
          new_population[i] = new MyCreature(new Chromosome(king.chromosome, queen.chromosome));

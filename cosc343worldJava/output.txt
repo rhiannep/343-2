@@ -1,0 +1,1001 @@
+
+Generation 1:
+ 27.51307 0
+Generation 2:
+ 32.529404 0
+Generation 3:
+ 32.62744 0
+Generation 4:
+ 33.640514 0
+Generation 5:
+ 32.790844 0
+Generation 6:
+ 30.748356 0
+Generation 7:
+ 31.89215 0
+Generation 8:
+ 32.692806 0
+Generation 9:
+ 33.771233 0
+Generation 10:
+ 31.728748 0
+Generation 11:
+ 32.80718 0
+Generation 12:
+ 33.967316 0
+Generation 13:
+ 32.545746 0
+Generation 14:
+ 33.05228 0
+Generation 15:
+ 34.212414 0
+Generation 16:
+ 31.336594 0
+Generation 17:
+ 32.9379 0
+Generation 18:
+ 33.3464 0
+Generation 19:
+ 32.594757 0
+Generation 20:
+ 34.816986 0
+Generation 21:
+ 30.830057 0
+Generation 22:
+ 34.098034 0
+Generation 23:
+ 36.794113 0
+Generation 24:
+ 34.522873 0
+Generation 25:
+ 35.944443 0
+Generation 26:
+ 36.499996 0
+Generation 27:
+ 36.990192 0
+Generation 28:
+ 36.95751 0
+Generation 29:
+ 34.441177 0
+Generation 30:
+ 32.758163 0
+Generation 31:
+ 34.21241 0
+Generation 32:
+ 35.97712 0
+Generation 33:
+ 35.06208 0
+Generation 34:
+ 32.758163 0
+Generation 35:
+ 33.035942 0
+Generation 36:
+ 33.05228 0
+Generation 37:
+ 35.503265 0
+Generation 38:
+ 34.849667 0
+Generation 39:
+ 38.258163 1
+Generation 40:
+ 33.28104 0
+Generation 41:
+ 33.46078 0
+Generation 42:
+ 36.941177 0
+Generation 43:
+ 42.810455 2
+Generation 44:
+ 46.11111 2
+Generation 45:
+ 43.12091 2
+Generation 46:
+ 47.679726 2
+Generation 47:
+ 47.87255 0
+Generation 48:
+ 45.68301 5
+Generation 49:
+ 39.80392 2
+Generation 50:
+ 42.702606 1
+Generation 51:
+ 46.2353 3
+Generation 52:
+ 46.722218 1
+Generation 53:
+ 44.101303 2
+Generation 54:
+ 45.029404 5
+Generation 55:
+ 44.993458 3
+Generation 56:
+ 39.640526 2
+Generation 57:
+ 41.60784 1
+Generation 58:
+ 41.970585 3
+Generation 59:
+ 46.120914 3
+Generation 60:
+ 42.74183 0
+Generation 61:
+ 47.215675 3
+Generation 62:
+ 42.163395 1
+Generation 63:
+ 43.42483 3
+Generation 64:
+ 40.078434 0
+Generation 65:
+ 44.08823 4
+Generation 66:
+ 43.545753 2
+Generation 67:
+ 47.40522 4
+Generation 68:
+ 40.888885 1
+Generation 69:
+ 46.00654 3
+Generation 70:
+ 42.12092 0
+Generation 71:
+ 45.32026 3
+Generation 72:
+ 39.54248 2
+Generation 73:
+ 47.362747 3
+Generation 74:
+ 42.892155 2
+Generation 75:
+ 46.450977 0
+Generation 76:
+ 35.47385 2
+Generation 77:
+ 46.738564 1
+Generation 78:
+ 43.15359 2
+Generation 79:
+ 41.25816 2
+Generation 80:
+ 44.73529 5
+Generation 81:
+ 40.692806 1
+Generation 82:
+ 46.486923 2
+Generation 83:
+ 44.003265 2
+Generation 84:
+ 39.72549 4
+Generation 85:
+ 46.045746 2
+Generation 86:
+ 47.722214 3
+Generation 87:
+ 44.56209 4
+Generation 88:
+ 46.11764 6
+Generation 89:
+ 47.202606 5
+Generation 90:
+ 35.53594 0
+Generation 91:
+ 44.620907 5
+Generation 92:
+ 37.84967 1
+Generation 93:
+ 42.343132 1
+Generation 94:
+ 48.310455 3
+Generation 95:
+ 45.581696 3
+Generation 96:
+ 41.715683 2
+Generation 97:
+ 42.591503 3
+Generation 98:
+ 41.40522 2
+Generation 99:
+ 42.738556 3
+Generation 100:
+ 43.957508 4
+Generation 101:
+ 43.16993 2
+Generation 102:
+ 44.460773 2
+Generation 103:
+ 43.669937 3
+Generation 104:
+ 42.124172 2
+Generation 105:
+ 46.977116 2
+Generation 106:
+ 41.218952 3
+Generation 107:
+ 43.934635 0
+Generation 108:
+ 44.343136 5
+Generation 109:
+ 40.781048 0
+Generation 110:
+ 42.24183 4
+Generation 111:
+ 45.87582 3
+Generation 112:
+ 42.483658 2
+Generation 113:
+ 42.581696 2
+Generation 114:
+ 43.872543 2
+Generation 115:
+ 45.598034 3
+Generation 116:
+ 46.735294 4
+Generation 117:
+ 46.022873 3
+Generation 118:
+ 44.173203 1
+Generation 119:
+ 48.094765 1
+Generation 120:
+ 43.562084 2
+Generation 121:
+ 41.248363 1
+Generation 122:
+ 44.78431 0
+Generation 123:
+ 43.405224 1
+Generation 124:
+ 48.238564 4
+Generation 125:
+ 43.20261 2
+Generation 126:
+ 45.44444 4
+Generation 127:
+ 40.941174 3
+Generation 128:
+ 47.035942 3
+Generation 129:
+ 47.594772 5
+Generation 130:
+ 47.90849 2
+Generation 131:
+ 43.09476 1
+Generation 132:
+ 41.872543 3
+Generation 133:
+ 43.97059 2
+Generation 134:
+ 47.601303 4
+Generation 135:
+ 43.836594 0
+Generation 136:
+ 40.797386 0
+Generation 137:
+ 44.5 1
+Generation 138:
+ 45.271236 3
+Generation 139:
+ 49.41503 4
+Generation 140:
+ 38.683006 1
+Generation 141:
+ 47.960785 4
+Generation 142:
+ 49.294113 5
+Generation 143:
+ 43.284306 2
+Generation 144:
+ 43.93791 2
+Generation 145:
+ 41.54248 1
+Generation 146:
+ 48.084965 0
+Generation 147:
+ 50.542484 4
+Generation 148:
+ 47.85294 3
+Generation 149:
+ 42.08169 1
+Generation 150:
+ 43.82353 2
+Generation 151:
+ 47.094765 4
+Generation 152:
+ 45.071888 1
+Generation 153:
+ 45.571888 2
+Generation 154:
+ 42.382355 0
+Generation 155:
+ 42.70588 3
+Generation 156:
+ 44.38889 3
+Generation 157:
+ 44.40196 1
+Generation 158:
+ 42.477123 3
+Generation 159:
+ 48.767975 3
+Generation 160:
+ 43.872547 2
+Generation 161:
+ 43.51307 2
+Generation 162:
+ 38.43791 1
+Generation 163:
+ 46.77451 3
+Generation 164:
+ 48.415028 2
+Generation 165:
+ 42.434635 2
+Generation 166:
+ 40.578426 1
+Generation 167:
+ 44.052284 2
+Generation 168:
+ 50.045753 5
+Generation 169:
+ 45.571888 2
+Generation 170:
+ 43.36601 2
+Generation 171:
+ 43.408493 3
+Generation 172:
+ 45.098038 2
+Generation 173:
+ 46.281036 1
+Generation 174:
+ 41.450977 0
+Generation 175:
+ 43.921566 2
+Generation 176:
+ 45.166668 4
+Generation 177:
+ 48.035942 0
+Generation 178:
+ 44.866005 5
+Generation 179:
+ 41.035942 1
+Generation 180:
+ 46.431366 3
+Generation 181:
+ 44.55882 2
+Generation 182:
+ 45.16666 4
+Generation 183:
+ 46.022865 3
+Generation 184:
+ 41.379086 1
+Generation 185:
+ 42.294113 1
+Generation 186:
+ 44.754894 2
+Generation 187:
+ 40.565353 3
+Generation 188:
+ 43.73529 3
+Generation 189:
+ 45.385612 3
+Generation 190:
+ 42.79084 0
+Generation 191:
+ 42.983654 3
+Generation 192:
+ 37.098034 1
+Generation 193:
+ 43.277775 3
+Generation 194:
+ 41.754898 1
+Generation 195:
+ 43.980385 3
+Generation 196:
+ 44.88561 2
+Generation 197:
+ 44.29738 2
+Generation 198:
+ 44.604572 5
+Generation 199:
+ 44.715675 3
+Generation 200:
+ 42.075157 2
+Generation 201:
+ 39.859467 1
+Generation 202:
+ 45.82026 4
+Generation 203:
+ 44.96732 2
+Generation 204:
+ 38.039207 2
+Generation 205:
+ 43.14706 3
+Generation 206:
+ 42.460773 3
+Generation 207:
+ 45.019604 4
+Generation 208:
+ 46.545746 3
+Generation 209:
+ 43.23529 2
+Generation 210:
+ 47.44444 3
+Generation 211:
+ 48.5915 5
+Generation 212:
+ 46.09477 2
+Generation 213:
+ 44.06209 3
+Generation 214:
+ 47.32353 4
+Generation 215:
+ 45.996727 2
+Generation 216:
+ 42.65686 3
+Generation 217:
+ 46.90196 1
+Generation 218:
+ 43.562084 2
+Generation 219:
+ 41.0915 0
+Generation 220:
+ 47.107834 2
+Generation 221:
+ 43.192802 1
+Generation 222:
+ 46.45424 2
+Generation 223:
+ 47.009796 2
+Generation 224:
+ 42.924835 2
+Generation 225:
+ 48.967316 5
+Generation 226:
+ 44.728752 1
+Generation 227:
+ 47.44444 3
+Generation 228:
+ 43.163403 3
+Generation 229:
+ 49.47059 3
+Generation 230:
+ 44.568623 3
+Generation 231:
+ 40.888885 1
+Generation 232:
+ 40.049015 2
+Generation 233:
+ 44.15359 4
+Generation 234:
+ 43.15359 2
+Generation 235:
+ 41.38889 2
+Generation 236:
+ 39.86601 0
+Generation 237:
+ 46.372543 2
+Generation 238:
+ 47.176468 4
+Generation 239:
+ 39.24836 2
+Generation 240:
+ 50.356205 5
+Generation 241:
+ 43.97058 2
+Generation 242:
+ 45.787575 4
+Generation 243:
+ 42.516335 2
+Generation 244:
+ 45.692806 1
+Generation 245:
+ 44.6634 1
+Generation 246:
+ 36.990196 0
+Generation 247:
+ 42.35947 1
+Generation 248:
+ 44.294113 5
+Generation 249:
+ 40.40849 2
+Generation 250:
+ 44.5196 3
+Generation 251:
+ 40.398685 1
+Generation 252:
+ 43.588234 3
+Generation 253:
+ 50.09804 2
+Generation 254:
+ 44.084965 2
+Generation 255:
+ 45.767963 2
+Generation 256:
+ 46.120914 3
+Generation 257:
+ 37.55555 1
+Generation 258:
+ 44.356205 3
+Generation 259:
+ 46.751633 4
+Generation 260:
+ 44.869274 2
+Generation 261:
+ 44.6732 2
+Generation 262:
+ 43.565357 4
+Generation 263:
+ 51.71895 4
+Generation 264:
+ 46.54901 5
+Generation 265:
+ 43.29739 0
+Generation 266:
+ 38.673203 0
+Generation 267:
+ 44.14052 1
+Generation 268:
+ 42.69607 2
+Generation 269:
+ 44.771236 2
+Generation 270:
+ 44.826794 1
+Generation 271:
+ 45.89869 2
+Generation 272:
+ 45.179733 2
+Generation 273:
+ 49.81373 3
+Generation 274:
+ 45.924835 3
+Generation 275:
+ 45.722218 4
+Generation 276:
+ 42.81699 1
+Generation 277:
+ 47.189533 2
+Generation 278:
+ 45.898697 2
+Generation 279:
+ 41.503265 2
+Generation 280:
+ 45.444435 4
+Generation 281:
+ 41.950977 1
+Generation 282:
+ 42.320255 2
+Generation 283:
+ 42.25489 2
+Generation 284:
+ 39.32026 1
+Generation 285:
+ 44.274506 3
+Generation 286:
+ 45.99019 3
+Generation 287:
+ 45.271233 3
+Generation 288:
+ 48.790844 2
+Generation 289:
+ 44.016335 5
+Generation 290:
+ 40.856205 1
+Generation 291:
+ 49.37909 2
+Generation 292:
+ 45.31046 2
+Generation 293:
+ 47.669933 1
+Generation 294:
+ 42.07516 2
+Generation 295:
+ 42.065357 1
+Generation 296:
+ 48.88888 2
+Generation 297:
+ 47.9281 4
+Generation 298:
+ 38.13398 0
+Generation 299:
+ 44.771236 2
+Generation 300:
+ 45.428104 4
+Generation 301:
+ 44.78758 2
+Generation 302:
+ 40.09476 0
+Generation 303:
+ 44.705875 2
+Generation 304:
+ 42.5 2
+Generation 305:
+ 41.323524 2
+Generation 306:
+ 45.392155 2
+Generation 307:
+ 43.722214 0
+Generation 308:
+ 43.764698 1
+Generation 309:
+ 43.61765 1
+Generation 310:
+ 43.372543 1
+Generation 311:
+ 47.160122 4
+Generation 312:
+ 46.421562 2
+Generation 313:
+ 48.241833 6
+Generation 314:
+ 47.617645 4
+Generation 315:
+ 44.67974 1
+Generation 316:
+ 47.92483 7
+Generation 317:
+ 40.202614 1
+Generation 318:
+ 45.49673 1
+Generation 319:
+ 41.84967 4
+Generation 320:
+ 45.454243 5
+Generation 321:
+ 39.696083 1
+Generation 322:
+ 46.06209 2
+Generation 323:
+ 47.362743 3
+Generation 324:
+ 42.98693 0
+Generation 325:
+ 42.82026 3
+Generation 326:
+ 43.73202 1
+Generation 327:
+ 45.124176 3
+Generation 328:
+ 42.558823 3
+Generation 329:
+ 42.091503 2
+Generation 330:
+ 44.73856 2
+Generation 331:
+ 40.50653 2
+Generation 332:
+ 42.49346 3
+Generation 333:
+ 39.617645 3
+Generation 334:
+ 48.104576 2
+Generation 335:
+ 46.954254 3
+Generation 336:
+ 50.480385 6
+Generation 337:
+ 48.7843 3
+Generation 338:
+ 48.506535 3
+Generation 339:
+ 43.633984 1
+Generation 340:
+ 43.85947 4
+Generation 341:
+ 47.859478 2
+Generation 342:
+ 46.196075 4
+Generation 343:
+ 45.310455 2
+Generation 344:
+ 43.055553 2
+Generation 345:
+ 41.830063 2
+Generation 346:
+ 42.183 3
+Generation 347:
+ 38.64379 2
+Generation 348:
+ 46.869278 1
+Generation 349:
+ 45.460777 4
+Generation 350:
+ 42.205875 2
+Generation 351:
+ 52.04575 4
+Generation 352:
+ 48.826797 4
+Generation 353:
+ 45.07516 3
+Generation 354:
+ 45.833332 2
+Generation 355:
+ 48.76797 3
+Generation 356:
+ 43.0915 4
+Generation 357:
+ 47.918297 3
+Generation 358:
+ 45.28104 4
+Generation 359:
+ 46.75816 3
+Generation 360:
+ 50.529404 6
+Generation 361:
+ 43.379086 0
+Generation 362:
+ 44.303913 1
+Generation 363:
+ 44.28431 4
+Generation 364:
+ 39.62418 2
+Generation 365:
+ 45.931377 2
+Generation 366:
+ 42.47385 1
+Generation 367:
+ 44.362743 2
+Generation 368:
+ 41.503265 2
+Generation 369:
+ 41.81372 2
+Generation 370:
+ 41.986923 3
+Generation 371:
+ 46.352936 5
+Generation 372:
+ 47.519604 4
+Generation 373:
+ 42.23856 2
+Generation 374:
+ 42.499992 2
+Generation 375:
+ 43.924835 4
+Generation 376:
+ 41.084965 1
+Generation 377:
+ 40.326794 2
+Generation 378:
+ 42.64052 3
+Generation 379:
+ 40.784313 2
+Generation 380:
+ 43.179733 3
+Generation 381:
+ 43.13725 7
+Generation 382:
+ 46.56536 5
+Generation 383:
+ 40.33334 1
+Generation 384:
+ 41.362743 1
+Generation 385:
+ 49.764706 3
+Generation 386:
+ 37.48039 0
+Generation 387:
+ 49.395424 2
+Generation 388:
+ 41.836594 1
+Generation 389:
+ 41.885616 1
+Generation 390:
+ 44.467316 1
+Generation 391:
+ 49.27777 5
+Generation 392:
+ 40.986923 1
+Generation 393:
+ 45.173206 3
+Generation 394:
+ 44.771236 2
+Generation 395:
+ 45.65033 0
+Generation 396:
+ 47.205875 2
+Generation 397:
+ 41.90195 1
+Generation 398:
+ 41.7647 2
+Generation 399:
+ 46.058815 5
+Generation 400:
+ 45.140522 3
+Generation 401:
+ 39.339867 3
+Generation 402:
+ 44.15359 4
+Generation 403:
+ 44.88889 4
+Generation 404:
+ 38.895416 1
+Generation 405:
+ 49.87255 4
+Generation 406:
+ 44.862743 3
+Generation 407:
+ 45.27777 2
+Generation 408:
+ 44.09477 3
+Generation 409:
+ 44.575153 2
+Generation 410:
+ 41.78758 1
+Generation 411:
+ 44.01634 5
+Generation 412:
+ 44.241825 3
+Generation 413:
+ 39.99019 1
+Generation 414:
+ 46.104572 3
+Generation 415:
+ 44.803925 2
+Generation 416:
+ 41.552277 2
+Generation 417:
+ 47.0098 2
+Generation 418:
+ 42.98366 3
+Generation 419:
+ 45.86601 2
+Generation 420:
+ 38.274506 1
+Generation 421:
+ 44.192806 3
+Generation 422:
+ 37.60458 1
+Generation 423:
+ 45.5 3
+Generation 424:
+ 46.66993 4
+Generation 425:
+ 41.73856 1
+Generation 426:
+ 45.88235 2
+Generation 427:
+ 43.709156 2
+Generation 428:
+ 43.480385 2
+Generation 429:
+ 41.035942 1
+Generation 430:
+ 44.14379 3
+Generation 431:
+ 50.013073 5
+Generation 432:
+ 45.140514 3
+Generation 433:
+ 47.369278 2
+Generation 434:
+ 43.35621 1
+Generation 435:
+ 45.326786 2
+Generation 436:
+ 45.15686 3
+Generation 437:
+ 44.251637 4
+Generation 438:
+ 41.2647 1
+Generation 439:
+ 50.169933 6
+Generation 440:
+ 41.38888 2
+Generation 441:
+ 47.395416 3
+Generation 442:
+ 47.954247 5
+Generation 443:
+ 49.104572 4
+Generation 444:
+ 45.76797 2
+Generation 445:
+ 40.905228 1
+Generation 446:
+ 40.86601 2
+Generation 447:
+ 43.33987 1
+Generation 448:
+ 47.369286 2
+Generation 449:
+ 44.673203 2
+Generation 450:
+ 48.284313 2
+Generation 451:
+ 48.82679 4
+Generation 452:
+ 45.830067 0
+Generation 453:
+ 46.013073 2
+Generation 454:
+ 47.620907 1
+Generation 455:
+ 45.450977 3
+Generation 456:
+ 42.003265 3
+Generation 457:
+ 46.513065 3
+Generation 458:
+ 47.12744 4
+Generation 459:
+ 50.431366 6
+Generation 460:
+ 42.83987 0
+Generation 461:
+ 46.604576 4
+Generation 462:
+ 53.633987 6
+Generation 463:
+ 49.480392 4
+Generation 464:
+ 47.23202 3
+Generation 465:
+ 48.228752 3
+Generation 466:
+ 44.470577 3
+Generation 467:
+ 51.08823 3
+Generation 468:
+ 51.169926 8
+Generation 469:
+ 37.352936 2
+Generation 470:
+ 50.637257 2
+Generation 471:
+ 47.88562 3
+Generation 472:
+ 47.836594 3
+Generation 473:
+ 47.20588 2
+Generation 474:
+ 49.52614 2
+Generation 475:
+ 45.957508 3
+Generation 476:
+ 44.238556 1
+Generation 477:
+ 50.92156 1
+Generation 478:
+ 45.14052 3
+Generation 479:
+ 48.9575 4
+Generation 480:
+ 47.228752 1
+Generation 481:
+ 49.55883 7
+Generation 482:
+ 42.43463 2
+Generation 483:
+ 47.6634 2
+Generation 484:
+ 43.803917 5
+Generation 485:
+ 48.950977 5
+Generation 486:
+ 47.705875 3
+Generation 487:
+ 47.369274 2
+Generation 488:
+ 50.36274 4
+Generation 489:
+ 48.9085 4
+Generation 490:
+ 45.977123 5
+Generation 491:
+ 45.539207 2
+Generation 492:
+ 52.83005 4
+Generation 493:
+ 48.820255 5
+Generation 494:
+ 50.496727 6
+Generation 495:
+ 45.656853 4
+Generation 496:
+ 49.42483 5
+Generation 497:
+ 45.408497 2
+Generation 498:
+ 49.460785 2
+Generation 499:
+ 49.686275 5
+Generation 500:
+ 51.513058 8

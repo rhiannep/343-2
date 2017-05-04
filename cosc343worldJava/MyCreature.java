@@ -71,12 +71,6 @@ public class MyCreature extends Creature {
       }
 
 
-      // for(int i = 0; i < VISIBLE_SQUARES; i++) {
-      //   for(int j = i; j < VISIBLE_SQUARES; j++) {
-      //     actions[i] += (chromosome.relativePreferences.get(i + "," + j)) * temp[j];
-      //   }
-      // }
-
       float redOverGreen = Math.abs(chromosome.preferenceForRed() / chromosome.preferenceForGreen());
       int food = percepts[chromosome.whichSquare() + (2 * VISIBLE_SQUARES)] > 0 ? 1 : 0;
 
@@ -89,8 +83,11 @@ public class MyCreature extends Creature {
         actions[numExpectedActions - 2] = chromosome.preferenceForEatingGreen();
       }
 
-      /* Random exploration. */
-      actions[numExpectedActions - 1] = chromosome.nextFloat();
+      float probabilityOfExploration = 0.05f;
+      if(chromosome.random.nextFloat() < probabilityOfExploration) {
+        actions[numExpectedActions - 1] = chromosome.explore();
+      }
+
 
       String result = "";
       for(int i = 0; i < actions.length; i++) {
