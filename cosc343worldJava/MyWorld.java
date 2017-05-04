@@ -20,8 +20,8 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 200;
-  private static final float[] FITNESS_PARAMS = { 3f, 3f, 5f };
+  private final int _numGenerations = 5000;
+  private static final float[] FITNESS_PARAMS = { 3f, 3f, 10f };
 
   /* Constructor.
 

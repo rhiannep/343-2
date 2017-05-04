@@ -71,11 +71,11 @@ public class MyCreature extends Creature {
       }
 
 
-      for(int i = 0; i < VISIBLE_SQUARES; i++) {
-        for(int j = 0; j < VISIBLE_SQUARES; j++) {
-          if(i != j) actions[i] += (chromosome.relativePreferences[i][j]) * temp[j];
-        }
-      }
+      // for(int i = 0; i < VISIBLE_SQUARES; i++) {
+      //   for(int j = i; j < VISIBLE_SQUARES; j++) {
+      //     actions[i] += (chromosome.relativePreferences.get(i + "," + j)) * temp[j];
+      //   }
+      // }
 
       float redOverGreen = Math.abs(chromosome.preferenceForRed() / chromosome.preferenceForGreen());
       int food = percepts[chromosome.whichSquare() + (2 * VISIBLE_SQUARES)] > 0 ? 1 : 0;
@@ -83,10 +83,10 @@ public class MyCreature extends Creature {
       /* Eat. */
       actions[numExpectedActions - 2] = 0;
       if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 2){
-        actions[numExpectedActions - 2] = chromosome.preferenceForRed() + chromosome.preferenceForEating();
+        actions[numExpectedActions - 2] = chromosome.preferenceForEatingRed();
       }
       if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 1){
-        actions[numExpectedActions - 2] = chromosome.preferenceForGreen() + chromosome.preferenceForEating();
+        actions[numExpectedActions - 2] = chromosome.preferenceForEatingGreen();
       }
 
       /* Random exploration. */
