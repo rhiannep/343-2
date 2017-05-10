@@ -52,22 +52,22 @@ public class MyCreature extends Creature {
       /* Percepts for Monsters. */
       for(int i = 0; i < VISIBLE_SQUARES; i++) {
         temp[i] += percepts[i] * chromosome.preferenceForMonsters();
-        temp[VISIBLE_SQUARES - i - 1] -= percepts[i] * chromosome.preferenceForMonsters();
+        // temp[VISIBLE_SQUARES - i - 1] -= percepts[i] * chromosome.preferenceForMonsters();
       }
       /* Percepts for other creatures. */
       for(int i = VISIBLE_SQUARES; i < VISIBLE_SQUARES * 2; i++) {
         temp[i] += percepts[i] * chromosome.preferenceForFriends();
-        temp[VISIBLE_SQUARES * 2 - i - 1] -= percepts[i] * chromosome.preferenceForFriends();
+        // temp[VISIBLE_SQUARES * 2 - i - 1] -= percepts[i] * chromosome.preferenceForFriends();
       }
       /* Percepts for food. */
       for(int i = VISIBLE_SQUARES * 2; i < numPercepts; i++) {
         if(percepts[i] == 1) {
           temp[i] += chromosome.preferenceForGreen();
-          temp[numPercepts - 1 - i] -= chromosome.preferenceForGreen();
+        //   temp[numPercepts - 1 - i] -= chromosome.preferenceForGreen();
         }
         if(percepts[i] == 2) {
           temp[i] += chromosome.preferenceForRed();
-          temp[numPercepts - 1 - i] -= chromosome.preferenceForRed();
+        //   temp[numPercepts - 1 - i] -= chromosome.preferenceForRed();
         }
       }
 
@@ -82,10 +82,10 @@ public class MyCreature extends Creature {
       /* Eat. */
       actions[numExpectedActions - 2] = 0;
       if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 2){
-        actions[numExpectedActions - 2] = chromosome.preferenceForFood() + chromosome.preferenceForEatingRed();
+        actions[numExpectedActions - 2] = chromosome.preferenceForEatingRed();
       }
       if(percepts[chromosome.whichSquare() + 2 * VISIBLE_SQUARES] == 1){
-        actions[numExpectedActions - 2] = chromosome.preferenceForFood() + chromosome.preferenceForEatingGreen();
+        actions[numExpectedActions - 2] = chromosome.preferenceForEatingGreen();
       }
 
       float probabilityOfExploration = 0.05f;

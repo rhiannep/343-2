@@ -6,7 +6,12 @@ public class Plotter {
     while(scanner.hasNext()) {
       Scanner lineScanner = new Scanner(scanner.next().replace(":", ""));
       lineScanner.next();
-      System.out.println(lineScanner.nextInt() + " " + lineScanner.nextFloat());
+      if(args.length > 0) {
+        System.out.println(lineScanner.nextInt() + " " + lineScanner.nextFloat());
+      } else {
+        lineScanner.nextInt();
+        System.out.println(lineScanner.nextFloat());
+      }
     }
   }
 }
