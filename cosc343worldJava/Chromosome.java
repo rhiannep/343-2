@@ -7,14 +7,15 @@ public class Chromosome {
   private static final int MIN_PREFERENCE = -1;
 
   public static final int MONSTERS = 0;
-  public static final int FIND_RED = 1;
-  public static final int FIND_GREEN = 2;
-  public static final int EAT_RED = 3;
-  public static final int EAT_GREEN = 4;
-  public static final int FRIENDS = 5;
-  public static final int GUESS_A_SQUARE = 6;
+  public static final int EAT_RED = 1;
+  public static final int FIND_RED = 2;
+  public static final int EAT_GREEN = 3;
+  public static final int FIND_GREEN = 4;
+  public static final int FOOD = 5;
+  public static final int FRIENDS = 6;
+  public static final int GUESS_A_SQUARE = 7;
 
-  public static final int PARAMS = 7;
+  public static final int PARAMS = 8;
 
   public float[] preferences;
   public HashMap<String, Float> hPreferences;
@@ -76,6 +77,10 @@ public class Chromosome {
     return preferences[EAT_GREEN];
   }
 
+  public float preferenceForFood() {
+    return preferences[FOOD];
+  }
+
   public int whichSquare() {
     return (int) preferences[GUESS_A_SQUARE];
   }
@@ -93,7 +98,7 @@ public class Chromosome {
   }
 
   public String toString() {
-    String result = "MONSTERS  FINDRED FINDGREEN    EAT RED    EAT GREEN   FRIENDS     SQUARE\n";
+    String result = "MONSTERS  EATRED FINDRED    EAT GREEN    FIND GREEN   FOOD FRIENDS  SQUARE\n";
     for(int i = 0; i < PARAMS; i++) {
       result += preferences[i] + " ";
     }

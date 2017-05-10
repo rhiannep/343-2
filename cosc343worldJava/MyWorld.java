@@ -20,7 +20,7 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 500;
+  private final int _numGenerations = 2000;
   private static final float[] FITNESS_PARAMS = { 8f, 10f, 3f };
 
   /* Constructor.
@@ -47,7 +47,7 @@ public class MyWorld extends World {
   public static void main(String[] args) {
      // Here you can specify the grid size, window size and whether torun
      // in repeatable mode or not
-     int gridSize = 30;
+     int gridSize = 24;
      int windowWidth =  1600;
      int windowHeight = 900;
      boolean repeatableMode = true;
