@@ -169,8 +169,8 @@ public class MyWorld extends World {
     //  System.out.println("Simulation stats:");
     //  System.out.println("  Survivors    : " + nSurvivors + " out of " + numCreatures);
     //  System.out.println("  Avg life time: " + avgLifeTime + " turns");
-     System.out.println(" " + averageFitness + " " + nSurvivors);
-     System.out.println(" " + king.chromosome.toString() + "\n" + fitness(king));
+     System.out.println(" " + averageFitness ); //+ " " + nSurvivors
+    //  System.out.println(" " + king.chromosome.toString() + "\n" + fitness(king));
     //  System.out.println(" " + queen.chromosome.toString()  + "\n" + fitness(queen));
 
 
