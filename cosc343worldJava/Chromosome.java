@@ -29,7 +29,7 @@ public class Chromosome {
     preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
   }
 
-  public Chromosome(Chromosome mum, Chromosome dad) {
+  public Chromosome(Chromosome dad, Chromosome mum) {
     preferences = new float[PARAMS];
     int crossover = 4;
     for(int i = 0; i < crossover; i++) {

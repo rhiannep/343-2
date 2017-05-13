@@ -20,7 +20,7 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 500;
+  private final int _numGenerations = 1000;
   private static final float[] FITNESS_PARAMS = { 8f, 10f, 3f };
 
   /* Constructor.
@@ -50,7 +50,7 @@ public class MyWorld extends World {
      int gridSize = 30;
      int windowWidth =  1600;
      int windowHeight = 900;
-     boolean repeatableMode = true;
+     boolean repeatableMode = false;
 
       /* Here you can specify percept format to use - there are three to
          chose from: 1, 2, 3.  Refer to the Assignment2 instructions for
@@ -169,7 +169,7 @@ public class MyWorld extends World {
     //  System.out.println("Simulation stats:");
     //  System.out.println("  Survivors    : " + nSurvivors + " out of " + numCreatures);
     //  System.out.println("  Avg life time: " + avgLifeTime + " turns");
-     System.out.println(" " + averageFitness ); //+ " " + nSurvivors
+     System.out.println(" " + averageFitness + " " + nSurvivors); //
     //  System.out.println(" " + king.chromosome.toString() + "\n" + fitness(king));
     //  System.out.println(" " + queen.chromosome.toString()  + "\n" + fitness(queen));
 
