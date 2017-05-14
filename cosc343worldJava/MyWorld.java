@@ -20,8 +20,8 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 5000;
-  private static final float[] FITNESS_PARAMS = { 8f, 10f, 3f };
+  private final int _numGenerations = 500;
+  private static final float[] FITNESS_PARAMS = { 10f, 15f, 4f };
 
   /* Constructor.
 
@@ -127,16 +127,40 @@ public class MyWorld extends World {
         }
      }
 
+     Random roulette = new Random();
+     float rouletteSpin1 = roulette.nextFloat();
+     float rouletteSpin2 = roulette.nextFloat();
+     MyCreature winner = king;
+     MyCreature runnerUp = queen;
+
+     float current = 0f;
+
+     for(MyCreature creature : old_population) {
+       float standardisedFitness = fitness(creature) / averageFitness;
+       if(rouletteSpin1 >= current && rouletteSpin1 < current + standardisedFitness) {
+         winner = creature;
+       }
+       if(rouletteSpin2 >= current && rouletteSpin2 < current + standardisedFitness) {
+         runnerUp = creature;
+       }
+     }
+
+
      averageFitness /= (float) numCreatures;
 
-     System.out.println("  Average Fitness: " + averageFitness); //
+     System.out.println(averageFitness); // "  Average Fitness: " +
      System.out.println("  Survivors      : " + nSurvivors + " out of " + numCreatures);
+    //  System.out.println(winner.chromosome);
+    //  System.out.println(runnerUp.chromosome);
+    //  System.out.println(fitness(winner));
+    //  System.out.println(fitness(runnerUp));
+
 
      for(int i = 0; i < numCreatures; i++) {
-       if(i % 5 == 0) {
+       if(i % 10 == 0) {
          new_population[i] = king;
        } else {
-         new_population[i] = new MyCreature(new Chromosome(king.chromosome, queen.chromosome));
+         new_population[i] = new MyCreature(new Chromosome(winner.chromosome, runnerUp.chromosome));
        }
      }
      return new_population;
@@ -160,12 +184,13 @@ public class MyWorld extends World {
       FITNESS_PARAMS[i] /= sumOfWeights;
     }
 
-    float fitness = FITNESS_PARAMS[0] * creature.getEnergy();
+    float fitness = 0f;
 
     if(creature.isDead()) {
       fitness += FITNESS_PARAMS[1] * creature.timeOfDeath();
-      fitness -= FITNESS_PARAMS[2];
+      fitness += FITNESS_PARAMS[0] * creature.getEnergy();
     } else {
+      fitness += FITNESS_PARAMS[0] * FITNESS_PARAMS[2] * creature.getEnergy();
       fitness += FITNESS_PARAMS[1] * 100f;
       fitness += FITNESS_PARAMS[2];
     }

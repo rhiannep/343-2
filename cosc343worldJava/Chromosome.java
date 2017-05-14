@@ -39,7 +39,7 @@ public class Chromosome {
       preferences[i] = dad.preferences[i];
     }
 
-    float probabilityOfMutation = 0.1f;
+    float probabilityOfMutation = 0.05f;
     if(random.nextFloat() < probabilityOfMutation) {
       for(int i = 0; i < 3; i++) {
         preferences[random.nextInt(PARAMS - 1)] += nextFloat();
