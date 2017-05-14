@@ -14,32 +14,13 @@ public class MyCreature extends Creature {
   private static final int VISIBLE_SQUARES = 9;
   Chromosome chromosome;
 
-  /* Empty constructor - might be a good idea here to put the code that
-   initialises the chromosome to some random state
 
-   Input: numPercept - number of percepts that creature will be receiving
-          numAction - number of action output vector that creature will need
-                      to produce on every turn
-  */
   public MyCreature(Chromosome chromosome) {
     this.chromosome = chromosome;
   }
 
-  /* This function must be overridden by MyCreature, because it implements
-     the AgentFunction which controls creature behavoiur.  This behaviour
-     should be governed by a model (that you need to come up with) that is
-     parameterise by the chromosome.
-
-     Input: percepts - an array of percepts
-            numPercepts - the size of the array of percepts depend on the percept
-                          chosen
-            numExpectedAction - this number tells you what the expected size
-                                of the returned array of percepts should bes
-     Returns: an array of actions
-  */
   @Override
   public float[] AgentFunction(int[] percepts, int numPercepts, int numExpectedActions) {
-
       float sum = 0;
       for(int i = 0; i < numPercepts; i++) {
         if(percepts[i] > 0) sum++;
@@ -86,12 +67,6 @@ public class MyCreature extends Creature {
       float probabilityOfExploration = 0.05f;
       if(chromosome.random.nextFloat() < probabilityOfExploration) {
         actions[numExpectedActions - 1] = chromosome.explore();
-      }
-
-
-      String result = "";
-      for(int i = 0; i < actions.length; i++) {
-        result += actions[i] + " ";
       }
 
       return actions;

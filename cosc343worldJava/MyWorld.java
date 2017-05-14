@@ -20,7 +20,7 @@ public class MyWorld extends World {
    * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 1000;
+  private final int _numGenerations = 5000;
   private static final float[] FITNESS_PARAMS = { 8f, 10f, 3f };
 
   /* Constructor.
@@ -63,87 +63,55 @@ public class MyWorld extends World {
      MyWorld sim = new MyWorld(gridSize, windowWidth, windowHeight, repeatableMode, perceptFormat);
   }
 
-
-  /* The MyWorld class must override this function, which is
-     used to fetch a population of creatures at the beginning of the
-     first simulation.  This is the place where you need to  generate
-     a set of creatures with random behaviours.
-
-     Input: numCreatures - this variable will tell you how many creatures
-                           the world is expecting
-
-     Returns: An array of MyCreature objects - the World will expect numCreatures
-              elements in that array
-  */
+  /**
+   * Generates the first generation of creatures. The first generation have
+   * randomly determined chromosome values. The work for this is in the
+   * Chromosome class, where the random seed is set, so every creature has it's
+   * own random seed.
+   * @param numCreatures the number of creatures the world is expecting.
+   * @return a starting generation of random creatures.
+   */
   @Override
   public MyCreature[] firstGeneration(int numCreatures) {
-
-    int numPercepts = this.expectedNumberofPercepts();
     int numActions = this.expectedNumberofActions();
-
-    // This is just an example code.  You may replace this code with
-    // your own that initialises an array of size numCreatures and creates
-    // a population of your creatures
     MyCreature[] population = new MyCreature[numCreatures];
-    for(int i=0;i<numCreatures;i++) {
+    for(int i = 0; i < numCreatures; i++) {
         population[i] = new MyCreature(new Chromosome());
     }
     return population;
   }
 
-  /* The MyWorld class must override this function, which is
-     used to fetch the next generation of the creatures.  This World will
-     proivde you with the old_generation of creatures, from which you can
-     extract information relating to how they did in the previous simulation...
-     and use them as parents for the new generation.
-
-     Input: old_population_btc - the generation of old creatures before type casting.
-                              The World doesn't know about MyCreature type, only
-                              its parent type Creature, so you will have to
-                              typecast to MyCreatures.  These creatures
-                              have been simulated over and their state
-                              can be queried to compute their fitness
-            numCreatures - the number of elements in the old_population_btc
-                           array
-
-
-  Returns: An array of MyCreature objects - the World will expect numCreatures
-           elements in that array.  This is the new population that will be
-           use for the next simulation.
-  */
+  /**
+   * Generates the next generation of creatures given the previous generation.
+   * Takes the two highest scoring creatures and makes a new population of
+   * creatures based on these two. The crossover of these two creatures is
+   * implemented elsewhere, in the chromosome class. This function also prints
+   * the average fitness and number of survivors for each generation.
+   * @param old_population_btc the preveious generation of creatures.
+   * @param numCreatures the number of creatures the world is expecting.
+   * @return a new generation of creatures bred from the given previous generation.
+   */
   @Override
   public MyCreature[] nextGeneration(Creature[] old_population_btc, int numCreatures) {
-    // Typcast old_population of Creatures to array of MyCreatures
+
      MyCreature[] old_population = (MyCreature[]) old_population_btc;
-     // Create a new array for the new population
+
      MyCreature[] new_population = new MyCreature[numCreatures];
 
-     // Here is how you can get information about old creatures and how
-     // well they did in the simulation
      float avgLifeTime=0f;
      int nSurvivors = 0;
      float averageFitness = 0f;
 
      MyCreature king = old_population[0];
      MyCreature queen = old_population[1];
+
      for(MyCreature creature : old_population) {
-        // The energy of the creature.  This is zero if creature starved to
-        // death, non-negative oterhwise.  If this number is zero, but the
-        // creature is dead, then this number gives the enrgy of the creature
-        // at the time of death.
         int energy = creature.getEnergy();
-
-        // This query can tell you if the creature died during simulation
-        // or not.
         boolean dead = creature.isDead();
-
         float fitness = fitness(creature);
-
         averageFitness += fitness;
 
         if(dead) {
-           // If the creature died during simulation, you can determine
-           // its time of death (in turns)
            int timeOfDeath = creature.timeOfDeath();
            avgLifeTime += (float) timeOfDeath;
         } else {
@@ -159,40 +127,28 @@ public class MyWorld extends World {
         }
      }
 
-     // Right now the information is used to print some stats...but you should
-     // use this information to access creatures fitness.  It's up to you how
-     // you define your fitness function.  You should add a print out or
-     // some visual display of average fitness over generations.
-     avgLifeTime /= (float) numCreatures;
      averageFitness /= (float) numCreatures;
 
-    //  System.out.println("Simulation stats:");
-    //  System.out.println("  Survivors    : " + nSurvivors + " out of " + numCreatures);
-    //  System.out.println("  Avg life time: " + avgLifeTime + " turns");
-     System.out.println(" " + averageFitness + " " + nSurvivors); //
-    //  System.out.println(" " + king.chromosome.toString() + "\n" + fitness(king));
-    //  System.out.println(" " + queen.chromosome.toString()  + "\n" + fitness(queen));
+     System.out.println("  Average Fitness: " + averageFitness); //
+     System.out.println("  Survivors      : " + nSurvivors + " out of " + numCreatures);
 
-
-     // Having some way of measuring the fitness, you should implement a proper
-     // parent selection method here and create a set of new creatures.  You need
-     // to create numCreatures of the new creatures.  If you'd like to have
-     // some elitism, you can use old creatures in the next generation.  This
-     // example code uses all the creatures from the old generation in the
-     // new generation.
-
-     for(int i=0;i<numCreatures; i++) {
+     for(int i = 0; i < numCreatures; i++) {
        if(i % 5 == 0) {
          new_population[i] = king;
        } else {
          new_population[i] = new MyCreature(new Chromosome(king.chromosome, queen.chromosome));
        }
-
      }
-     // Return new population of creatures.
      return new_population;
   }
 
+  /**
+   * Fitness function determines the fitness of a creature using a weighted
+   * average of energy level, lifespan, and survival status. Weights are
+   * determined in FITNESS_PARAMS and normalized here.
+   * @param creature the creature to calculate the fitness for.
+   * @return the final fitness score for the given creature.
+   */
   private float fitness(Creature creature) {
     float sumOfWeights = 0f;
 
