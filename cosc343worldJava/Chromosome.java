@@ -32,7 +32,17 @@ public class Chromosome {
 
   public Chromosome(Chromosome dad, Chromosome mum, Random random) {
     this.random = random;
+    float probabilityOfMutation = 0.05f;
     preferences = new float[PARAMS];
+
+    if(this.random.nextFloat() < probabilityOfMutation) {
+      for(int i = 0; i < preferences.length - 1; i++) {
+        preferences[i] = nextFloat();
+      }
+      preferences[GUESS_A_SQUARE] = this.random.nextInt(VISIBLE_SQUARES);
+      return;
+    }
+    
     int crossover = 4;
     for(int i = 0; i < crossover; i++) {
       preferences[i] = mum.preferences[i];
@@ -41,7 +51,6 @@ public class Chromosome {
       preferences[i] = dad.preferences[i];
     }
 
-    float probabilityOfMutation = 0.05f;
     if(this.random.nextFloat() < probabilityOfMutation) {
       for(int i = 0; i < 3; i++) {
         preferences[random.nextInt(PARAMS - 1)] += nextFloat();
