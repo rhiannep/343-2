@@ -9,27 +9,29 @@ public class Chromosome {
   public static final int MONSTERS = 0;
   public static final int FIND_RED = 1;
   public static final int FIND_GREEN = 2;
-  public static final int EAT_RED = 3;
-  public static final int EAT_GREEN = 4;
-  public static final int FRIENDS = 5;
+  public static final int FRIENDS = 3;
+  public static final int EAT_RED = 4;
+  public static final int EAT_GREEN = 5;
+
   public static final int GUESS_A_SQUARE = 6;
 
   public static final int PARAMS = 7;
 
   public float[] preferences;
-  public HashMap<String, Float> hPreferences;
 
-  public final Random random = new Random();
+  public Random random;
 
-  public Chromosome() {
+  public Chromosome(Random random) {
+    this.random = random;
     preferences = new float[PARAMS];
     for(int i = 0; i < preferences.length - 1; i++) {
       preferences[i] = nextFloat();
     }
-    preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
+    preferences[GUESS_A_SQUARE] = this.random.nextInt(VISIBLE_SQUARES);
   }
 
-  public Chromosome(Chromosome dad, Chromosome mum) {
+  public Chromosome(Chromosome dad, Chromosome mum, Random random) {
+    this.random = random;
     preferences = new float[PARAMS];
     int crossover = 4;
     for(int i = 0; i < crossover; i++) {
@@ -40,14 +42,14 @@ public class Chromosome {
     }
 
     float probabilityOfMutation = 0.05f;
-    if(random.nextFloat() < probabilityOfMutation) {
+    if(this.random.nextFloat() < probabilityOfMutation) {
       for(int i = 0; i < 3; i++) {
         preferences[random.nextInt(PARAMS - 1)] += nextFloat();
       }
     }
 
-    if(random.nextFloat() < probabilityOfMutation/3f) {
-      preferences[GUESS_A_SQUARE] = random.nextInt(VISIBLE_SQUARES);
+    if(this.random.nextFloat() < probabilityOfMutation/3f) {
+      preferences[GUESS_A_SQUARE] = this.random.nextInt(VISIBLE_SQUARES);
     }
   }
 

@@ -1,6 +1,5 @@
 import cosc343.assig2.World;
 import cosc343.assig2.Creature;
-import chromosome.Chromosome;
 import java.util.*;
 
 /**
@@ -16,163 +15,166 @@ import java.util.*;
 public class MyWorld extends World {
 
   /* Here you can specify the number of turns in each simulation
-   * and the number of generations that the genetic algorithm will
-   * execute.
+  * and the number of generations that the genetic algorithm will
+  * execute.
   */
   private final int _numTurns = 100;
-  private final int _numGenerations = 500;
-  private static final float[] FITNESS_PARAMS = { 10f, 15f, 4f };
+  private final int _numGenerations = 1000;
+  private static final float[] FITNESS_PARAMS = { 20f, 30f, 10f };
+  private static final Random random = new Random();
 
   /* Constructor.
 
-     Input: gridSize - the size of the world
-            windowWidth - the width (in pixels) of the visualisation window
-            windowHeight - the height (in pixels) of the visualisation window
-            repeatableMode - if set to true, every simulation in each
-                             generation will start from the same state
-            perceptFormat - format of the percepts to use: choice of 1, 2, or 3
+  Input: gridSize - the size of the world
+  windowWidth - the width (in pixels) of the visualisation window
+  windowHeight - the height (in pixels) of the visualisation window
+  repeatableMode - if set to true, every simulation in each
+  generation will start from the same state
+  perceptFormat - format of the percepts to use: choice of 1, 2, or 3
   */
   public MyWorld(int gridSize, int windowWidth, int windowHeight, boolean repeatableMode, int perceptFormat) {
-      // Initialise the parent class - don't remove this
-      super(gridSize, windowWidth,  windowHeight, repeatableMode, perceptFormat);
+    // Initialise the parent class - don't remove this
+    super(gridSize, windowWidth,  windowHeight, repeatableMode, perceptFormat);
 
-      // Set the number of turns and generations
-      this.setNumTurns(_numTurns);
-      this.setNumGenerations(_numGenerations);
+    // Set the number of turns and generations
+    this.setNumTurns(_numTurns);
+    this.setNumGenerations(_numGenerations);
   }
 
   /* The main function for the MyWorld application
 
   */
   public static void main(String[] args) {
-     // Here you can specify the grid size, window size and whether torun
-     // in repeatable mode or not
-     int gridSize = 30;
-     int windowWidth =  1600;
-     int windowHeight = 900;
-     boolean repeatableMode = false;
+    // Here you can specify the grid size, window size and whether torun
+    // in repeatable mode or not
+    int gridSize = 30;
+    int windowWidth =  1600;
+    int windowHeight = 900;
+    boolean repeatableMode = true;
 
-      /* Here you can specify percept format to use - there are three to
-         chose from: 1, 2, 3.  Refer to the Assignment2 instructions for
-         explanation of the three percept formats.
-      */
-     int perceptFormat = 2;
+    /* Here you can specify percept format to use - there are three to
+    chose from: 1, 2, 3.  Refer to the Assignment2 instructions for
+    explanation of the three percept formats.
+    */
+    int perceptFormat = 2;
 
-     // Instantiate MyWorld object.  The rest of the application is driven
-     // from the window that will be displayed.
-     MyWorld sim = new MyWorld(gridSize, windowWidth, windowHeight, repeatableMode, perceptFormat);
+    // Instantiate MyWorld object.  The rest of the application is driven
+    // from the window that will be displayed.
+    MyWorld sim = new MyWorld(gridSize, windowWidth, windowHeight, repeatableMode, perceptFormat);
   }
 
   /**
-   * Generates the first generation of creatures. The first generation have
-   * randomly determined chromosome values. The work for this is in the
-   * Chromosome class, where the random seed is set, so every creature has it's
-   * own random seed.
-   * @param numCreatures the number of creatures the world is expecting.
-   * @return a starting generation of random creatures.
-   */
+  * Generates the first generation of creatures. The first generation have
+  * randomly determined chromosome values. The work for this is in the
+  * Chromosome class, where the random seed is set, so every creature has it's
+  * own random seed.
+  * @param numCreatures the number of creatures the world is expecting.
+  * @return a starting generation of random creatures.
+  */
   @Override
   public MyCreature[] firstGeneration(int numCreatures) {
     int numActions = this.expectedNumberofActions();
     MyCreature[] population = new MyCreature[numCreatures];
     for(int i = 0; i < numCreatures; i++) {
-        population[i] = new MyCreature(new Chromosome());
+      population[i] = new MyCreature();
     }
     return population;
   }
 
   /**
-   * Generates the next generation of creatures given the previous generation.
-   * Takes the two highest scoring creatures and makes a new population of
-   * creatures based on these two. The crossover of these two creatures is
-   * implemented elsewhere, in the chromosome class. This function also prints
-   * the average fitness and number of survivors for each generation.
-   * @param old_population_btc the preveious generation of creatures.
-   * @param numCreatures the number of creatures the world is expecting.
-   * @return a new generation of creatures bred from the given previous generation.
-   */
+  * Generates the next generation of creatures given the previous generation.
+  * Takes the two highest scoring creatures and makes a new population of
+  * creatures based on these two. The crossover of these two creatures is
+  * implemented elsewhere, in the chromosome class. This function also prints
+  * the average fitness and number of survivors for each generation.
+  * @param old_population_btc the preveious generation of creatures.
+  * @param numCreatures the number of creatures the world is expecting.
+  * @return a new generation of creatures bred from the given previous generation.
+  */
   @Override
   public MyCreature[] nextGeneration(Creature[] old_population_btc, int numCreatures) {
 
-     MyCreature[] old_population = (MyCreature[]) old_population_btc;
+    MyCreature[] old_population = (MyCreature[]) old_population_btc;
 
-     MyCreature[] new_population = new MyCreature[numCreatures];
+    MyCreature[] new_population = new MyCreature[numCreatures];
 
-     float avgLifeTime=0f;
-     int nSurvivors = 0;
-     float averageFitness = 0f;
+    float avgLifeTime=0f;
+    int nSurvivors = 0;
+    float averageFitness = 0f;
 
-     MyCreature king = old_population[0];
-     MyCreature queen = old_population[1];
+    MyCreature king = old_population[0];
+    MyCreature queen = old_population[1];
 
-     for(MyCreature creature : old_population) {
-        int energy = creature.getEnergy();
-        boolean dead = creature.isDead();
-        float fitness = fitness(creature);
-        averageFitness += fitness;
+    for(MyCreature creature : old_population) {
+      int energy = creature.getEnergy();
+      boolean dead = creature.isDead();
+      float fitness = fitness(creature);
+      averageFitness += fitness;
 
-        if(dead) {
-           int timeOfDeath = creature.timeOfDeath();
-           avgLifeTime += (float) timeOfDeath;
-        } else {
-           nSurvivors += 1;
-           avgLifeTime += (float) _numTurns;
-        }
+      if(dead) {
+        int timeOfDeath = creature.timeOfDeath();
+        avgLifeTime += (float) timeOfDeath;
+      } else {
+        nSurvivors += 1;
+        avgLifeTime += (float) _numTurns;
+      }
 
-        if(fitness > fitness(king)) {
-          king = creature;
-        }
-        if(fitness > fitness(queen) && fitness < fitness(king)) {
-          queen = creature;
-        }
-     }
+      if(fitness > fitness(king)) {
+        king = creature;
+      }
+      if(fitness > fitness(queen) && fitness < fitness(king)) {
+        queen = creature;
+      }
+    }
 
-     Random roulette = new Random();
-     float rouletteSpin1 = roulette.nextFloat();
-     float rouletteSpin2 = roulette.nextFloat();
-     MyCreature winner = king;
-     MyCreature runnerUp = queen;
+    Random roulette = new Random();
+    float rouletteSpin1 = roulette.nextFloat();
+    float rouletteSpin2 = roulette.nextFloat();
+    MyCreature winner = king;
+    MyCreature runnerUp = queen;
 
-     float current = 0f;
+    float current = 0f;
 
-     for(MyCreature creature : old_population) {
-       float standardisedFitness = fitness(creature) / averageFitness;
-       if(rouletteSpin1 >= current && rouletteSpin1 < current + standardisedFitness) {
-         winner = creature;
-       }
-       if(rouletteSpin2 >= current && rouletteSpin2 < current + standardisedFitness) {
-         runnerUp = creature;
-       }
-     }
-
-
-     averageFitness /= (float) numCreatures;
-
-     System.out.println(averageFitness); // "  Average Fitness: " +
-     System.out.println("  Survivors      : " + nSurvivors + " out of " + numCreatures);
-    //  System.out.println(winner.chromosome);
-    //  System.out.println(runnerUp.chromosome);
-    //  System.out.println(fitness(winner));
-    //  System.out.println(fitness(runnerUp));
+    for(MyCreature creature : old_population) {
+      float standardisedFitness = fitness(creature) / averageFitness;
+      if(rouletteSpin1 >= current && rouletteSpin1 < current + standardisedFitness) {
+        winner = creature;
+      }
+      if(rouletteSpin2 >= current && rouletteSpin2 < current + standardisedFitness) {
+        runnerUp = creature;
+      }
+    }
 
 
-     for(int i = 0; i < numCreatures; i++) {
-       if(i % 10 == 0) {
-         new_population[i] = king;
-       } else {
-         new_population[i] = new MyCreature(new Chromosome(winner.chromosome, runnerUp.chromosome));
-       }
-     }
-     return new_population;
+    averageFitness /= (float) numCreatures;
+
+    System.out.println(averageFitness); // "  Average Fitness: " +
+    System.out.println("  Survivors      : " + nSurvivors + " out of " + numCreatures);
+    System.out.println(winner.chromosome);
+    System.out.println(fitness(winner));
+    System.out.println(runnerUp.chromosome);
+    System.out.println(fitness(runnerUp));
+    System.out.println(king.chromosome);
+    System.out.println(fitness(king));
+
+
+    for(int i = 0; i < numCreatures; i++) {
+      if(i % 10 == 0) {
+        new_population[i] = king;
+      } else {
+        new_population[i] = new MyCreature(winner, runnerUp);
+      }
+    }
+    return new_population;
   }
 
   /**
-   * Fitness function determines the fitness of a creature using a weighted
-   * average of energy level, lifespan, and survival status. Weights are
-   * determined in FITNESS_PARAMS and normalized here.
-   * @param creature the creature to calculate the fitness for.
-   * @return the final fitness score for the given creature.
-   */
+  * Fitness function determines the fitness of a creature using a weighted
+  * average of energy level, lifespan, and survival status. Weights are
+  * determined in FITNESS_PARAMS and normalized here.
+  * @param creature the creature to calculate the fitness for.
+  * @return the final fitness score for the given creature.
+  */
   private float fitness(Creature creature) {
     float sumOfWeights = 0f;
 
@@ -196,5 +198,4 @@ public class MyWorld extends World {
     }
     return fitness;
   }
-
 }

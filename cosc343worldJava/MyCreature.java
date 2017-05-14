@@ -1,22 +1,27 @@
 import cosc343.assig2.Creature;
 import chromosome.Chromosome;
+import java.util.*;
 
 /**
-* The MyCreate extends the cosc343 assignment 2 Creature.  Here you implement
-* creatures chromosome and the agent function that maps creature percepts to
-* actions.
-*
-* @author
-* @version 1.0
-* @since   2017-04-05
+ * The MyCreate extends the cosc343 assignment 2 Creature.  Here you implement
+ * creatures chromosome and the agent function that maps creature percepts to
+ * actions.
+ *
+ * @author Rhianne Price
+ * @version 1.0
+ * @since   2017-04-05
 */
 public class MyCreature extends Creature {
   private static final int VISIBLE_SQUARES = 9;
-  Chromosome chromosome;
+  public Chromosome chromosome;
+  private Random random = new Random();
 
+  public MyCreature() {
+    this.chromosome = new Chromosome(random);
+  }
 
-  public MyCreature(Chromosome chromosome) {
-    this.chromosome = chromosome;
+  public MyCreature(MyCreature mum, MyCreature dad) {
+    this.chromosome = new Chromosome(mum.chromosome, dad.chromosome, random);
   }
 
   @Override
