@@ -48,7 +48,7 @@ public class Chromosome {
       }
     }
 
-    if(this.random.nextFloat() < probabilityOfMutation/3f) {
+    if(this.random.nextFloat() < probabilityOfMutation) {
       preferences[GUESS_A_SQUARE] = this.random.nextInt(VISIBLE_SQUARES);
     }
   }

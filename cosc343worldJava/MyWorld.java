@@ -20,7 +20,7 @@ public class MyWorld extends World {
   */
   private final int _numTurns = 100;
   private final int _numGenerations = 1000;
-  private static final float[] FITNESS_PARAMS = { 20f, 30f, 10f };
+  private static final float[] FITNESS_PARAMS = { 15f, 30f, 10f };
   private static final Random random = new Random();
 
   /* Constructor.
