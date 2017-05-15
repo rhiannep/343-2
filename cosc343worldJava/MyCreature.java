@@ -43,9 +43,8 @@ public class MyCreature extends Creature {
   }
 
   /**
-   * Constructor generates a new chromosome adapted from two parent creatures.
-   * Implementation of crossover and mutation is elsewhere: in the Chromosome
-   * class.
+   * Constructor generates a new chromosome adapted from two parent creatures
+   * Using crossover and mutation.
    * @param mum the first parent make a new chromosome out of.
    * @param dad the second parent make a new chromosome out of.
    */
@@ -53,6 +52,7 @@ public class MyCreature extends Creature {
       float probabilityOfMutation = 0.05f;
       chromosome = new float[PARAMS];
 
+      /* Entirely fresh craeture sometimes generated. */
       if(this.random.nextFloat() < probabilityOfMutation) {
         for(int i = 0; i < chromosome.length - 1; i++) {
           chromosome[i] = nextFloat();
@@ -62,13 +62,17 @@ public class MyCreature extends Creature {
       }
 
       int crossover = 5;
+      /* Take the mums first four parameters. */
       for(int i = 0; i < crossover; i++) {
         chromosome[i] = mum.chromosome[i];
       }
+
+      /* Take the dads last four parameters. */
       for(int i = crossover; i < PARAMS; i++) {
         chromosome[i] = dad.chromosome[i];
       }
 
+      /* Mutate three random parameters by a random fraction. */
       if(this.random.nextFloat() < probabilityOfMutation) {
         for(int i = 0; i < 3; i++) {
           chromosome[random.nextInt(PARAMS - 1)] += nextFloat();
