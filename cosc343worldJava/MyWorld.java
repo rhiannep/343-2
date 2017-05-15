@@ -192,7 +192,7 @@ public class MyWorld extends World {
       fitness += FITNESS_PARAMS[1] * creature.timeOfDeath();
       fitness += FITNESS_PARAMS[0] * creature.getEnergy();
     } else {
-      fitness += FITNESS_PARAMS[0] * FITNESS_PARAMS[2] * creature.getEnergy();
+      fitness += FITNESS_PARAMS[0] * (1 + FITNESS_PARAMS[2]) * creature.getEnergy();
       fitness += FITNESS_PARAMS[1] * 100f;
       fitness += FITNESS_PARAMS[2];
     }
