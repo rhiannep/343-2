@@ -64,13 +64,13 @@ public class MyWorld extends World {
   }
 
   /**
-  * Generates the first generation of creatures. The first generation have
-  * randomly determined chromosome values. The work for this is in the
-  * Chromosome class, where the random seed is set, so every creature has it's
-  * own random seed.
-  * @param numCreatures the number of creatures the world is expecting.
-  * @return a starting generation of random creatures.
-  */
+   * Generates the first generation of creatures. The first generation have
+   * randomly determined chromosome values. The work for this is in the
+   * MyCreature class, where the random seed is set, so every creature has it's
+   * own random seed.
+   * @param numCreatures the number of creatures the world is expecting.
+   * @return a starting generation of random creatures.
+   */
   @Override
   public MyCreature[] firstGeneration(int numCreatures) {
     int numActions = this.expectedNumberofActions();
@@ -82,28 +82,25 @@ public class MyWorld extends World {
   }
 
   /**
-  * Generates the next generation of creatures given the previous generation.
-  * Takes the two highest scoring creatures and makes a new population of
-  * creatures based on these two. The crossover of these two creatures is
-  * implemented elsewhere, in the chromosome class. This function also prints
-  * the average fitness and number of survivors for each generation.
-  * @param old_population_btc the preveious generation of creatures.
-  * @param numCreatures the number of creatures the world is expecting.
-  * @return a new generation of creatures bred from the given previous generation.
-  */
+   * Generates the next generation of creatures given the previous generation.
+   * Takes the two highest scoring creatures and makes a new population of
+   * creatures based on these two. The crossover of these two creatures is
+   * implemented elsewhere, int the MyCreature class. This function also prints
+   * the average fitness and number of survivors for each generation.
+   * @param old_population_btc the preveious generation of creatures.
+   * @param numCreatures the number of creatures the world is expecting.
+   * @return a new generation of creatures bred from the given previous generation.
+   */
   @Override
   public MyCreature[] nextGeneration(Creature[] old_population_btc, int numCreatures) {
-
     MyCreature[] old_population = (MyCreature[]) old_population_btc;
-
     MyCreature[] new_population = new MyCreature[numCreatures];
 
-    float avgLifeTime=0f;
+    float avgLifeTime = 0f;
     int nSurvivors = 0;
     float averageFitness = 0f;
 
     MyCreature king = old_population[0];
-    MyCreature queen = old_population[1];
 
     for(MyCreature creature : old_population) {
       int energy = creature.getEnergy();
@@ -122,16 +119,13 @@ public class MyWorld extends World {
       if(fitness > fitness(king)) {
         king = creature;
       }
-      if(fitness > fitness(queen) && fitness < fitness(king)) {
-        queen = creature;
-      }
     }
 
     Random roulette = new Random();
     float rouletteSpin1 = roulette.nextFloat();
     float rouletteSpin2 = roulette.nextFloat();
     MyCreature winner = king;
-    MyCreature runnerUp = queen;
+    MyCreature runnerUp = king;
 
     float current = 0f;
 
@@ -145,18 +139,10 @@ public class MyWorld extends World {
       }
     }
 
-
     averageFitness /= (float) numCreatures;
 
-    System.out.println(averageFitness); // "  Average Fitness: " +
+    System.out.println("  Average Fitness: " + averageFitness);
     System.out.println("  Survivors      : " + nSurvivors + " out of " + numCreatures);
-    System.out.println(winner.chromosome);
-    System.out.println(fitness(winner));
-    System.out.println(runnerUp.chromosome);
-    System.out.println(fitness(runnerUp));
-    System.out.println(king.chromosome);
-    System.out.println(fitness(king));
-
 
     for(int i = 0; i < numCreatures; i++) {
       if(i % 10 == 0) {
@@ -169,12 +155,12 @@ public class MyWorld extends World {
   }
 
   /**
-  * Fitness function determines the fitness of a creature using a weighted
-  * average of energy level, lifespan, and survival status. Weights are
-  * determined in FITNESS_PARAMS and normalized here.
-  * @param creature the creature to calculate the fitness for.
-  * @return the final fitness score for the given creature.
-  */
+   * Fitness function determines the fitness of a creature using a weighted
+   * average of energy level, lifespan, and survival status. Weights are
+   * determined in FITNESS_PARAMS and normalized here.
+   * @param creature the creature to calculate the fitness for.
+   * @return the final fitness score for the given creature.
+   */
   private float fitness(Creature creature) {
     float sumOfWeights = 0f;
 
