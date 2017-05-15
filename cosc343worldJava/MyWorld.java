@@ -45,7 +45,7 @@ public class MyWorld extends World {
 
   */
   public static void main(String[] args) {
-    // Here you can specify the grid size, window size and whether torun
+    // Here you can specify the grid size, window size and whether to run
     // in repeatable mode or not
     int gridSize = 30;
     int windowWidth =  1600;
@@ -53,9 +53,8 @@ public class MyWorld extends World {
     boolean repeatableMode = true;
 
     /* Here you can specify percept format to use - there are three to
-    chose from: 1, 2, 3.  Refer to the Assignment2 instructions for
-    explanation of the three percept formats.
-    */
+       chose from: 1, 2, 3.  Refer to the Assignment2 instructions for
+       explanation of the three percept formats. */
     int perceptFormat = 2;
 
     // Instantiate MyWorld object.  The rest of the application is driven
